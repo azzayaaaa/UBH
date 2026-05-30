@@ -37,7 +37,7 @@ export function LoginForm() {
     <form onSubmit={submit} autoComplete="off" className="card mx-auto grid max-w-md gap-4 p-6">
       <label className="grid gap-2 text-sm font-medium text-[#334155]">
         Админ имэйл
-        <input name="username" type="email" inputMode="email" autoComplete="off" placeholder="azzayabayartai07@gmail.com" className="input" />
+        <input name="username" type="email" inputMode="email" autoComplete="off" placeholder="admin@ubhcenter.mn" className="input" />
       </label>
       <label className="grid gap-2 text-sm font-medium text-[#334155]">
         Нууц үг

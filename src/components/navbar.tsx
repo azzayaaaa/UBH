@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Building2, Menu, Wrench } from 'lucide-react'
+import { Building2, LockKeyhole, Menu, Wrench } from 'lucide-react'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -42,6 +42,17 @@ export function Navbar() {
               {label}
             </Link>
           ))}
+          <Link
+            href="/admin"
+            onClick={() => setOpen(false)}
+            className={cn(
+              'flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-[#64748b] transition hover:bg-[#f1f5f9] hover:text-[#1a3a5c]',
+              pathname.startsWith('/admin') && 'bg-[#eef4ff] text-[#2563eb]'
+            )}
+          >
+            <LockKeyhole className="h-4 w-4" />
+            Нэвтрэх
+          </Link>
         </div>
       </nav>
     </header>
