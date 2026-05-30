@@ -12,14 +12,15 @@ function getJwtSecret() {
 }
 
 export async function verifyAdmin(username: string, password: string) {
-  if (username !== ADMIN_EMAIL) return false
+  const email = username.trim().toLowerCase()
+  if (email !== ADMIN_EMAIL) return false
 
   if (!process.env.DATABASE_URL) {
     return password === ADMIN_PASSWORD
   }
 
   try {
-    const admin = await getPrisma().admin.findUnique({ where: { username } })
+    const admin = await getPrisma().admin.findUnique({ where: { username: email } })
     if (!admin) return password === ADMIN_PASSWORD
     return bcrypt.compare(password, admin.passwordHash)
   } catch {

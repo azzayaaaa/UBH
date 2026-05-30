@@ -1,12 +1,13 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import type { FormEvent } from 'react'
 import { useState } from 'react'
 import { LogIn } from 'lucide-react'
 
 export function LoginForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -28,7 +29,7 @@ export function LoginForm() {
       return
     }
 
-    router.push('/admin/dashboard')
+    router.push(searchParams.get('next') || '/admin/dashboard')
     router.refresh()
   }
 
@@ -36,7 +37,7 @@ export function LoginForm() {
     <form onSubmit={submit} autoComplete="off" className="card mx-auto grid max-w-md gap-4 p-6">
       <label className="grid gap-2 text-sm font-medium text-[#334155]">
         Админ имэйл
-        <input name="username" type="email" inputMode="email" autoComplete="off" placeholder="admin@example.com" className="input" />
+        <input name="username" type="email" inputMode="email" autoComplete="off" placeholder="azzayabayartai07@gmail.com" className="input" />
       </label>
       <label className="grid gap-2 text-sm font-medium text-[#334155]">
         Нууц үг
