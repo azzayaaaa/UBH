@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: #f8f9fc;
+  color: #0f172a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fc;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #f8f9fc;
+  border-radius: 999px;
+  background: #1a3a5c;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-[#e2e8f0] bg-white shadow-[0_2px_16px_rgba(0,0,0,0.08)];
+  }
+
+  .card-hover {
+    @apply transition duration-300 hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(15,23,42,0.12)];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#1a3a5c] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#102b46] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-[#e2e8f0] bg-white px-5 py-3 text-sm font-semibold text-[#1a3a5c] transition hover:border-[#2563eb] hover:text-[#2563eb] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2;
+  }
+
+  .input {
+    @apply rounded-lg border border-[#e2e8f0] bg-white px-4 py-3 text-sm text-[#0f172a] outline-none transition placeholder:text-[#94a3b8] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.22em] text-[#2563eb];
+  }
+}

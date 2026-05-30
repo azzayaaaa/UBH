@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id          Int      @id @default(autoincrement())
+  name        String
+  floor       Int
+  room        String
+  category    String
+  phone       String
+  email       String
+  website     String?
+  hours       String
+  logo        String?
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([floor])
+  @@index([category])
+}
+
+model ServiceRequest {
+  id           Int           @id @default(autoincrement())
+  companyName  String
+  contactPhone String
+  requestType  RequestType
+  description  String        @db.Text
+  status       RequestStatus @default(PENDING)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@index([status])
+  @@index([requestType])
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+enum RequestType {
+  IT_SUPPORT
+  CLEANING
+  SECURITY
+  ELECTRICITY
+  OTHER
+}
+
+enum RequestStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
